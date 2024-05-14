@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Hacking Tutorials
+  site: 'https://ethicalhackx.github.io'
   base: '/'
   trailingSlash: false
 
