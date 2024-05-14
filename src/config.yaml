@@ -1,6 +1,6 @@
 site:
   name: Hacking Tutorials
-  site: 'https://ethicalhackx.github.io/ethicalhackx/'
+  site: 'https://ethicalhackx.github.io'
   base: '/'
   trailingSlash: false
 
@@ -34,7 +34,7 @@ i18n:
 apps:
   blog:
     isEnabled: true
-    postsPerPage: 6
+    postsPerPage: 10
 
     post:
       isEnabled: true
@@ -44,7 +44,7 @@ apps:
 
     list:
       isEnabled: true
-      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
+      pathname: '' # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
 
