@@ -15,7 +15,7 @@ export const headerData = {
       href: '/category/webappsec',
     },
     {
-      text: 'SOC-DFIR',
+      text: 'SOC/IR',
       href: '#',
     },
     // //
