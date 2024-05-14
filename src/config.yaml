@@ -1,6 +1,6 @@
 site:
   name: Hacking Tutorials
-  site: 'https://ethicalhackx.github.io'
+  site: 'https://ethicalhackx.github.io/ethicalhackx/'
   base: '/'
   trailingSlash: false
 
