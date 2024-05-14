@@ -1,6 +1,6 @@
 ---
 title: Cyber Security Interview Questions (for Jobs*)
-publishDate: 2023-07-12T00:00:00Z
+publishDate: 2023-07-12
 author: Abhinav Kumar
 image:   '~/assets/images/Cyber_Sec_Interview_Questions.jpg'
 excerpt: Real Cyber Security Interview Questions for Penetration Testers, SOC Analysts, Malware Analyst, Red Team Engineer and more.
