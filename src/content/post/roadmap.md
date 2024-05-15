@@ -26,4 +26,4 @@ The aim is to move fast, later when you have some knowledge of things, you can d
 We are working on simplifying this roadmap and will update it in coming days.
 
 
-<img src="~/assets/images/Cyber_Security_Roadmap_(Beginners).svg" alt="Description" />
+<img src="/src/assets/images/Cyber_Security_Roadmap_(Beginners).svg" alt="Description" />
