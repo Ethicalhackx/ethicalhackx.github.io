@@ -1,7 +1,7 @@
 ---
 title: Cyber Security RoadMap (2024)
 publishDate: 2024-05-12
-updateDate: 2024-05-12
+updateDate: 2024-05-14
 author: Abhinav Kumar
 image:   '~/assets/images/roadmap.jpg'
 excerpt: Hwo to Get started in Cyber Security to become Hacker, Penetration Tester, SOC Analyst, Security Engineer in 2024.
@@ -25,6 +25,5 @@ The aim is to move fast, later when you have some knowledge of things, you can d
 
 We are working on simplifying this roadmap and will update it in coming days.
 
-Download the PDF for reference.
 
 <img src="/src/assets/images/Cyber_Security_Roadmap_(Beginners).svg" alt="Description" />
