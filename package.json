@@ -17,6 +17,7 @@
     "lint:eslint": "eslint ."
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^5.1.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
     "@astrolib/analytics": "^0.5.0",
@@ -27,6 +28,9 @@
     "astro-icon": "^1.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-toc": "^9.0.0",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
@@ -53,6 +57,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "reading-time": "^1.5.0",
+    "rehype-accessible-emojis": "^0.3.2",
     "rehype-plugin-image-native-lazy-loading": "^1.2.0",
     "sharp": "0.33.3",
     "tailwind-merge": "^2.3.0",

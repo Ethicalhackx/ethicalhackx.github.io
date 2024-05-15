@@ -12,6 +12,14 @@ import compress from '@playform/compress';
 
 import astrowind from './vendor/integration';
 
+import remarkToc from 'remark-toc';
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
+import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+
+
+
 import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
@@ -80,8 +88,11 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
+    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: "Table of Contents"} ]],
+    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin, rehypeHeadingIds, rehypeAccessibleEmojis,rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
+    // Applied to .md and .mdx files
+    // remarkPlugins: [remarkToc],
+    // rehypePlugins: [rehypeAccessibleEmojis],
   },
 
   vite: {
