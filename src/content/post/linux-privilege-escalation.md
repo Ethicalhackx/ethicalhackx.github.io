@@ -4,7 +4,7 @@ publishDate: 2023-08-05
 author: Abhinav Kumar
 image:   '~/assets/images/bash.jpeg'
 excerpt: Linux Privilege Escalation.
-draft: true
+draft: false
 category: Hacking 101
 ---
 
@@ -13,8 +13,8 @@ Linux Privilege Escalation.
 This article like many other is a progressive one, that is will be updated with more related contents.  
 This article was last updated on - **September 07, 2023.**
 
-
 #### Table of Contents
+
 ## System Enumeration
 hostname - machine name, sometimes it is related to one of te exploits.
 

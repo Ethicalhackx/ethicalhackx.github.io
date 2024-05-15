@@ -1,6 +1,7 @@
 ---
 title: Cyber Security Interview Questions (for Jobs*)
 publishDate: 2023-07-12
+updatedDate: 2023-05-15
 author: Abhinav Kumar
 image:   '~/assets/images/Cyber_Sec_Interview_Questions.jpg'
 excerpt: Real Cyber Security Interview Questions for Penetration Testers, SOC Analysts, Malware Analyst, Red Team Engineer and more.
@@ -8,6 +9,13 @@ draft: false
 category: Hacking 101
 tags: 
    - interview
+   - job
+   - Red Team
+   - Application Security
+   - Network
+   - Hacking
+   - SOC
+   - Incident Response
 metadata:
   canonical: https://ethicalhackx.com/cyber-security-interview
 ---
@@ -18,7 +26,6 @@ Different Cyber Security Job Roles - A look at different domains in Cyber Securi
 
 #### Table of Contents
 
-<Tweet id="https://twitter.com/abhinavkakku/status/1609385254615420929/"/>
 
 https://twitter.com/abhinavkakku/status/1609385254615420929/
 
@@ -185,7 +192,7 @@ Again, the questions here are not guessed, can be limitless, so just putting ver
 
 
 
-## Application Security
+### Application Security
 
 1. Heard of OWASP ? What is it ? name some Vulnerabilities from OWASP-T10.
 1. What is Vulnerability Assesment, Pentesting , and Red teaming. Differences ?
@@ -331,7 +338,7 @@ Hontesly I have no-clue of this branch, but questions on compliance standards , 
 
 ----
 
-## Opinion based questions or Scenario....
+## Scenario / Opinion based questions.
 
 These questions are to know your views, and there is usually no right or wrong answer here. It is more of a discussion to know your opinions , the way you see the problem or solve it, there is/are always more approaches to solve the problem.
 
