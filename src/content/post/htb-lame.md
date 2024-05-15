@@ -13,6 +13,10 @@ category: HackTheBox
 HackTheBox Link to Lame Machine - [HTB Lame](https://app.hackthebox.com/machines/lame)
 
 
+#### Table of Contents
+
+
+### Initial Recon
 Initial Nmap Scan for the machine/endpoint
 
 The default scan gives no results , using -Pn switch gives FTP, SSH, NetBIOS, and SMB ports, scanning for all ports adds one more open port - 3632 . So we scan all these ports for Service versions.
@@ -87,7 +91,7 @@ Nmap done: 1 IP address (1 host up) scanned in 51.88 seconds
 ```
 
 
-Searching Exploits 
+### Searching Exploits 
 vsftpd anonymous Login to FTP did not give any results, hence looking at SMB.
 
 ```bash
@@ -114,7 +118,10 @@ Samba < 3. | linux_x86/dos/36741.py
 Shellcodes: No Results
 
 
+
 ```
+
+### Exploitation
 
 Searching Exploits in Metasploit and setting the options .
 
@@ -230,6 +237,8 @@ msf6 exploit(multi/samba/usermap_script) > run
 
 
 ```
+
+### Flags && Reverse Shell
 
 Checking the user on Shell session we notice we are now root, so we can read through all the flags , user flag present in makis user directory and root at usual location
 

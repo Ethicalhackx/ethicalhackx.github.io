@@ -13,7 +13,9 @@ category: HackTheBox
 HackTheBox Link to Shocker Machine - [HTB-Shocker](https://app.hackthebox.com/machines/shocker)
 
 The Machine is a simple straight forward machine which is based on ShellShock Vulnerability.
+### Table of Contents
 
+### Recon
 Initial Nmap Scan results shows two open ports 80 (HTTP) , 2222 .
 Checking services scan from nmap .
 
@@ -66,12 +68,13 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 16.29 seconds
  ```
 
-### Enumeration 
+### Enumeration
 
 Visiting the IP:80 in browser presents us with an Image that does not means much, checking source code also does not reveals anything.
 
 ![HTB-Shocker-Website](~/assets/images/htb-shocker-website.png)
 
+#### Directory Scanning
 Let us run Gobuster and see if we find anything.
 Nothing found.
 
@@ -97,6 +100,8 @@ Progress: 87664 / 87665 (100.00%)
 Finished
 ===============================================================
 ```
+
+### Vulnerability
 
 The machine name suggests it is vulnerable to ShellShock Vulnerability, where the servers utilize CGI. The common directories that are usually present are /cgi-bin , /cgi-mod , /cgi-sys.
 

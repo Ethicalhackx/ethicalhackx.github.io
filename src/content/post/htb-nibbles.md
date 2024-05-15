@@ -12,7 +12,9 @@ category: HackTheBox
 
 HackTheBox Link to Nibbles Machine - [HTB-Bashed](https://app.hackthebox.com/machines/nibbles)
 
-## Nmaping Nibbles
+#### Table of Contents
+
+### Recon
 
 Adding hosts file entry for bashed
 ```bash
@@ -83,6 +85,8 @@ OS and Service detection performed. Please report any incorrect results at https
 Nmap done: 1 IP address (1 host up) scanned in 17.27 seconds
 ```
 
+#### Recon on port 80
+
 Checking the page in browser Says Hello World, but nothing more.
 In the sourcecode view in browser, we se a comment 
 
@@ -107,6 +111,8 @@ In the sourcecode view in browser, we se a comment
 
 When we check /nibbleblog/ directory in browser we can see Nibbleblog powered CMS.
 From the source-code of the nibbles, we can see some more directories that are related to CMS like /nibbleblog/themes/ , /nibbleblog/content/ 
+
+#### directory scan
 
 We run a Gobuster scan to discover more
 
@@ -313,7 +319,7 @@ root@Nibbles:/home/nibbler/personal/stuff# cat /root/root.txt
 84522082a88d8486069bec7ca27a7cb0
 root@Nibbles:/home/nibbler/personal/stuff# 
 ```
-## Learnings
+### Learnings
 
 1. In case of Web (80/443) or any other web service ports exposed, source code can sometimes help to get in right direction.
 2. Source code (or view source) can also help us get some directories on the machine.

@@ -14,6 +14,7 @@ This article like many other is a progressive one, that is will be updated with 
 This article was last updated on - **September 07, 2023.**
 
 
+#### Table of Contents
 ## System Enumeration
 hostname - machine name, sometimes it is related to one of te exploits.
 

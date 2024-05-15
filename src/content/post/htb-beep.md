@@ -8,6 +8,9 @@ draft: true
 category: HackTheBox
 ---
 
+#### Table of Contents
+
+### Initial Recon
 
 ```bash
 abhinav@ETHICALHACKX:~$ nmap beep.htb  

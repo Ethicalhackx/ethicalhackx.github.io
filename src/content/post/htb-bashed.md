@@ -15,6 +15,9 @@ tags:
 
 HackTheBox Link to Bashed Machine - [HTB-Bashed](https://app.hackthebox.com/machines/bashed)
 
+#### Table of Contents
+
+
 ## Nmaping Bashed
 
 Adding hosts file entry for bashed

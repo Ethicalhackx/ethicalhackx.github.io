@@ -2,7 +2,7 @@
 coverImage: "network_for_hackers.jpg"
 title: Basic Network Concepts for Hacking
 publishDate: 2024-05-03
-updateDate: 2024-05-04
+updateDate: 2024-05-15
 author: Abhinav Kumar
 image: '~/assets/images/network_for_hackers.jpg'
 excerpt: Networking for hackers is about essentials of Computer Network that people in Hacking/security should learn.
@@ -14,11 +14,13 @@ Hello People, today I am going to list some networking concepts that are essenti
 
 This Article was last Updated on - **May 04, 2024**
 
+#### Table of Contents
+
 So the list will not be exhaustive, also not in order, but it will be more of essential topics we should learn, and read from various sources to understand the very fundamentals.
 
 Also the list below is not a compilation but something what I thought to learn , so the list keeps getting populated as I discover new topics, any suggestions or changes are always welcome through comments or Social-channels.
 
-
+## Basic
 1. What is Network ?
 2. What is Internet ?
 3. How Internet Started ?
@@ -32,7 +34,7 @@ Also the list below is not a compilation but something what I thought to learn ,
 11. How are ports used to establish communication to services ? Basically initiating and listening concept of server client.
 12. What is MAC Address / Physical Address ?
 
-Common Ports and their usage
+## Common Ports and their usage
 
 1. tcp/20 - FTP (active mode data transfer)
 2. tcp/21 - FTP (control)
@@ -56,6 +58,7 @@ Common Ports and their usage
 20. tcp/3389 - RDP - Remote Desktop Protocol
 21. tcp/5060 tcp/5061 - Voice over IP(VoIP) using Session Initiation Protocol(SIP)
 
+### More Networking Concepts
 More Basic+ Networking Concepts
 
 - What is DNS ? How is DNS Resolved ?

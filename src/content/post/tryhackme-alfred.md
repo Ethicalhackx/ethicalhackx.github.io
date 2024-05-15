@@ -16,6 +16,9 @@ TryHackMe Link to SteelMountain Machine - [THM-SteelMountain](https://tryhackme.
 
 We will Solve the Machine Completely and post that Answer to the Questions on TryHackMe in the end.
 
+#### Table of Contents
+
+## Initial Recon
 
 Adding machine to hosts file.
 ```bash
@@ -25,7 +28,7 @@ abhinav@ETHICALHACKX:~$ echo 10.10.145.60    alfred.thm | sudo tee -a /etc/hosts
 ```
 
 
-## Nmapping 
+### Nmapping 
 
 ```bash
 abhinav@ETHICALHACKX:~$ ports=$(nmap -p- --min-rate=1000 -T5 alfred.thm | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed 's/,$//')
