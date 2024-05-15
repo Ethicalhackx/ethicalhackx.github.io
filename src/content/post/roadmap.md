@@ -13,6 +13,7 @@ tags:
     - DFIR
     - Penetration Tester
     - roadmap
+
 ---
 
 How to get started in Cyber Security, what are the things one should learn when starting Cyber Security Journey .
@@ -24,6 +25,5 @@ If you already know the things mentioned , just skip it.
 The aim is to move fast, later when you have some knowledge of things, you can decide what to spend time on, what topics to study in details and depth.
 
 We are working on simplifying this roadmap and will update it in coming days.
-
 
 <img src="/src/assets/images/Cyber_Security_Roadmap_(Beginners).svg" alt="Description" />
