@@ -99,8 +99,8 @@ export const footerData = {
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/ethicalhackx' },
   ],
-  footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="src/assets/favicons/favicon.ico" alt="onWidget logo" loading="lazy"></img>
-    Made using <a class="text-blue-600 underline dark:text-muted" href="https://astro.build/"> Astro</a>
-  `,
+  // footNote: `
+  //   <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="src/assets/favicons/favicon.ico" alt="onWidget logo" loading="lazy"></img>
+  //   Made using <a class="text-blue-600 underline dark:text-muted" href="https://astro.build/"> Astro</a>
+  // `,
 };
