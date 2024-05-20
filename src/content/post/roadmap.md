@@ -4,7 +4,7 @@ publishDate: 2024-05-12
 updateDate: 2024-05-14
 author: Abhinav Kumar
 image:   '~/assets/images/roadmap.jpg'
-excerpt: Hwo to Get started in Cyber Security to become Hacker, Penetration Tester, SOC Analyst, Security Engineer in 2024.
+excerpt: How to Get started in Cyber Security to become Hacker, Penetration Tester, SOC Analyst, Security Engineer in 2024.
 draft: false
 category: Hacking-101
 tags:
