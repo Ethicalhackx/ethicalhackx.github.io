@@ -1,17 +1,19 @@
 ---
 title: Splunk for Security Analysts / Engineers
 publishDate: 2024-05-20
-updateDate: 2024-05-2-
+updateDate: 2024-05-20
 author: Abhinav Kumar
 image:   '~/assets/images/roadmap.jpg'
 excerpt: Getting started with Splunk for SOC / Security Engineers
-draft: False
+draft: True
 category: SOC
 tags:
     - SOC Analyst
     - Security Engineer
     - DFIR
     - roadmap
+    - Splunk
+    - SIEM
 
 ---
 
