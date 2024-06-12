@@ -26,6 +26,9 @@ The aim is to move fast, later when you have some knowledge of things, you can d
 
 Download the roadmap as  PDF - <a href="/cybersec_roadmap.pdf" download="Cyber_Security_RoadMap_2024.pdf" class="download-button">Download PDF</a>
 
+![Cyber Security RoadMap 2024](~/assets/images/cybersec_roadmap.svg)
+
+
 We are working on simplifying this roadmap and will update it in coming days.
 
 <img src="/public/cybersec_roadmap.svg" alt="Description" />
