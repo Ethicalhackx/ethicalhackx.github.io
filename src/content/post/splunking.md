@@ -5,7 +5,7 @@ updateDate: 2024-05-20
 author: Abhinav Kumar
 image:   '~/assets/images/roadmap.jpg'
 excerpt: Getting started with Splunk for SOC / Security Engineers
-draft: True
+draft: False
 category: SOC
 tags:
     - SOC Analyst
@@ -21,6 +21,8 @@ Shortest path to get into Cyber Security (SOC) is knowledge of one of the SIEM T
 Lets see Splunk for that matter which is I guess the most widely used SIEM solution.
 
 Worried about cost ? Lets focus onlearning thorught the Trial Splunk Setup.
+
+### Table of Contents
 
 ## Splunk Instalation
 
