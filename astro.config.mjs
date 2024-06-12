@@ -34,7 +34,7 @@ const whenExternalScripts = (items = []) =>
 
 export default defineConfig({
   output: 'static',
-  publicDir: './public',
+  publicDir: 'public',
 
   integrations: [
     tailwind({
