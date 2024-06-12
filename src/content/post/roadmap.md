@@ -22,7 +22,7 @@ There is no definitive answer ! But I have tried to cover few of these things th
 Cyber Security is in iteself a big world with diferent job profiles, but as a beginner what all to learn, we see that further in this post.
 
 If you already know the things mentioned , just skip it.
-The aim is to move fast, later when you have some knowledge of things, you can decide what to spend time on, what topics to study in details and depth.
+The aim is to learn fast, later when you have some knowledge of things, you can decide what to spend time on, what topics to study in details and depth.
 
 Download the roadmap as  PDF - <a href="/cybersec_roadmap.pdf" download="Cyber_Security_RoadMap_2024.pdf" class="download-button">Download PDF</a>
 
