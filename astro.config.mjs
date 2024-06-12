@@ -34,7 +34,9 @@ const whenExternalScripts = (items = []) =>
 
 export default defineConfig({
   output: 'static',
-
+  security: {
+    checkOrigin: true
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
