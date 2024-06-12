@@ -24,7 +24,7 @@ Cyber Security is in iteself a big world with diferent job profiles, but as a be
 If you already know the things mentioned , just skip it.
 The aim is to move fast, later when you have some knowledge of things, you can decide what to spend time on, what topics to study in details and depth.
 
-Download the roadmap as  PDF - <a href="/public/cybersec_roadmap.pdf" download="Cyber_Security_RoadMap_2024.pdf" class="download-button">Download PDF</a>
+Download the roadmap as  PDF - <a href="/cybersec_roadmap.pdf" download="Cyber_Security_RoadMap_2024.pdf" class="download-button">Download PDF</a>
 
 We are working on simplifying this roadmap and will update it in coming days.
 
