@@ -44,7 +44,7 @@ If you are looking to practice your Hacking Skills in your own free homelab setu
 | #18| DVNA|Damn Vulnerable NodeJS Application | https://lnkd.in/ds3JReM5
 | #19| DVRA|Damn Vulnerable Ruby on Rails | https://lnkd.in/djQ_ehzi
 | #20| DVGM|Damn Vulnerable Grade Management | https://lnkd.in/dAepn4K7
-| #21| Tiredful-API | https://lnkd.in/d3NjivMu
+| #21| Tiredful-API |Tiredful API is intentionally designed broken app| https://lnkd.in/d3NjivMu
 | #22| DVCSharp|Damn Vulnerable C# Application | https://lnkd.in/d8cZxdnr
 | #23| DVHMA|Damn Vulnerable Hybrid Mobile App | https://lnkd.in/dSMZMuzZ
 | #24| DVIA|Damn Vulnerable iOS App | https://lnkd.in/dJqPp-d9
