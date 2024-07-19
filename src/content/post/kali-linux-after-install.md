@@ -1,6 +1,7 @@
 ---
 title: My Kali Linux Setup {things I do after install}
 publishDate: 2024-01-16
+updatedDate: 2024-07-19
 author: Abhinav Kumar
 image:   '~/assets/images/my_kali_linux_setup.png'
 excerpt: My Kali Linux Setup, things that I do / modify after installing Kali Linux.
@@ -121,10 +122,11 @@ autologin-user-timeout=0
 
 
 ```bash
-sudo apt install -y software-properties-common kali-archive-keyring git stow  neovim curl zsh tmux texlive-latex-recommended texlive-fonts-extra texlive-latex-extra pandoc evince seclists gobuster rlwrap dirsearch html2text gedit python3 python-is-python3 golang
+sudo apt install -y software-properties-common kali-archive-keyring git stow  neovim curl zsh tmux texlive-latex-recommended texlive-fonts-extra texlive-latex-extra pandoc evince seclists gobuster rlwrap dirsearch html2text gedit python3 python-is-python3 pipx golang crackmapexec netexec
 ```
 
-Changing default editor to be added later
+
+
 
 #### 5.2 python3-pip installation
 ```bash
