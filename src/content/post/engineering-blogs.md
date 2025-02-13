@@ -1,12 +1,12 @@
 ---
 title: Engineering Blogs to Read
-publishDate: 2025-02-13
-updatedDate: 2025-02-13
+publishDate: 2025-02-12
+updatedDate: 2025-02-12
 author: Abhinav Kumar
 image:   '~/assets/images/engineering_blogs.png'
 excerpt: Most Interesting Engineering Blogs
 draft: false
-category: Hacking 101
+category: blog
 tags: 
    - Engineering Blogs
 metadata:
