@@ -1,0 +1,136 @@
+---
+title: Splunk for Security Analysts / Engineers
+publishDate: 2025-03-30
+updateDate: 2025-04-01
+author: Abhinav Kumar
+image:   '~/assets/images/roadmap.jpg'
+excerpt: Getting started with Splunk for SOC / Security Engineers
+draft: False
+category: SOC
+tags:
+    - SOC Analyst
+    - Security Engineer
+    - DFIR
+    - roadmap
+    - Splunk
+    - SIEM
+
+---
+
+Shortest path to get into Cyber Security (SOC) is knowledge of one of the SIEM Tools,
+Lets see Splunk for that matter which is I guess the most widely used SIEM solution.
+
+Worried about cost ? Lets focus on learning thorught the Trial Splunk Setup.
+
+### Table of Contents
+
+
+
+### Phase 1: Introduction to Splunk (Beginner)
+⏳ Duration: 1-2 weeks
+🎯 Goal: Understand Splunk's core concepts, interface, and basic search capabilities.
+
+1. Introduction to Splunk
+2. What is Splunk? Why use it in Security?
+3. Splunk Free vs. Enterprise vs. Cloud
+4. Installation & setup (Local / Cloud)
+5. Splunk architecture: Indexers, Search Heads, Forwarders
+6. Basic Navigation
+1. Splunk Web UI overview
+1. Search & Reporting App
+1. Splunk Processing Components (Indexing, Parsing, Searching)
+1. Basic Searching
+1. Search Processing Language (SPL) basics
+1. Using index=, source=, sourcetype=
+1. Search modes: Fast, Smart, Verbose
+1. Understanding timestamps & time ranges
+1. Field Extraction & Data Normalization
+1. Automatic vs. Manual field extractions
+1. Using rex and spath commands for JSON/XML logs
+1. Aliases, Calculated Fields, and Lookups
+1. Hands-on Labs
+1. Installing Splunk locally
+1. Running your first searches
+1. Extracting fields using SPL
+1. Uploading sample logs & indexing them
+
+### Phase 2: Intermediate Splunk for Security Analysts
+⏳ Duration: 2-3 weeks
+🎯 Goal: Start analyzing security logs, creating dashboards, and setting up alerts.
+
+1. Advanced Searching & Filtering
+1. Using stats, timechart, chart, eval
+1. Regex filtering with rex & regex
+1. Joins and subsearches (join, append, map)
+1. Transaction-based searches (transaction vs. stats)
+1. Security Log Analysis
+1. Windows Event Logs (Security, System, Application)
+1. Linux Logs (auth.log, syslog, secure.log)
+1. Firewall & Proxy Logs (Cisco ASA, Palo Alto, FortiGate)
+1. Threat Intelligence data (Threat feeds, IP reputation)
+1. Alerts & Monitoring
+1. Creating alerts (savedsearch, trigger conditions)
+1. Real-time vs. scheduled alerts
+1. Notifications (Email, Slack, Webhooks)
+1. Custom alert scripts for automation
+1. Dashboards & Visualizations
+1. Creating security dashboards
+1. Using table, timechart, geostats for visualization
+1. Drilldowns and dynamic panels
+1. Hands-on Labs
+1. Analyze login attempts from Windows Event logs
+1. Detect brute-force login attempts
+1. Create an alert for failed SSH logins
+1. Build a dashboard for network traffic logs
+
+### Phase 3: Advanced Security Analytics in Splunk
+⏳ Duration: 3-4 weeks
+🎯 Goal: Perform threat hunting, use advanced SPL, and integrate Splunk with other security tools.
+
+1. Threat Hunting with Splunk
+1. Identifying anomalies in logs
+1. Tracking suspicious user behavior (stats, tstats, anomalydetection)
+1. Correlation searches for multi-stage attacks
+1. Splunk Enterprise Security (ES)
+1. Introduction to Splunk ES
+1. Security domains (Access, Endpoint, Network, Threat Intelligence)
+1. Use Case: Detecting Insider Threats with UEBA
+1. Risk-based alerting (RBA) overview
+1. SIEM Integration & Data Onboarding
+1. Integrating SIEM logs (IBM QRadar, ArcSight)
+1. Collecting data from EDR (CrowdStrike, SentinelOne)
+1. Using Splunk with SOAR (Phantom)
+1. Machine Learning in Splunk
+1. ML Toolkit Introduction
+1. Anomaly Detection Models
+1. Predicting threats with ML (examples)
+1. Hands-on Labs
+1. Correlate failed logins & lateral movement
+1. Investigate a phishing attack using email logs
+1. Detect exfiltration with Splunk & UEBA
+1. Integrate Splunk with an EDR tool (CrowdStrike)
+
+### Phase 4: Current Developments & Industry Trends
+⏳ Duration: Ongoing
+🎯 Goal: Stay updated with the latest security trends & Splunk advancements.
+
+1. New Features in Splunk
+1. Splunk Edge Processor
+1. Splunk Observability
+1. Splunk Security Cloud
+1. Modern Threat Trends
+1. Ransomware analysis with Splunk
+1. MITRE ATT&CK framework & detection use cases
+1. Cloud security monitoring (AWS, Azure, GCP)
+1. SOAR & Automation
+1. Automating threat response with Splunk SOAR
+1. Writing playbooks for automated remediation
+1. Real-world SOAR case studies
+1. Hands-on Labs
+1. Implement a Ransomware detection use case
+1. Automate phishing investigations with SOAR
+
+Monitor cloud security logs (AWS GuardDuty, Azure Sentinel)
+
+Additional Resources
+🔗 Splunk Documentation: https://docs.splunk.com
