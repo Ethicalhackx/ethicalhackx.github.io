@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -85,8 +85,7 @@ export default defineConfig({
   ],
 
   image: {
-    service: squooshImageService(),
-    domains: ['cdn.pixabay.com'],
+    // Using the default Sharp image service in Astro 5
   },
 
   markdown: {
