@@ -1,8 +1,8 @@
 ---
 import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
+import { SEO } from 'astro-seo';
 
-import type { Props as AstroSeoProps } from '@astrolib/seo';
+import type { Props as SEOProps } from 'astro-seo';
 
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import type { MetaData } from '~/types';
@@ -24,20 +24,29 @@ const {
   twitter = {},
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
+const seoProps: SEOProps = merge(
   {
-    title: '',
+    title: SITE?.name || '',
     titleTemplate: '%s',
     canonical: canonical,
     noindex: true,
     nofollow: true,
-    description: undefined,
+    description: SITE?.description,
     openGraph: {
-      url: canonical,
-      site_name: SITE?.name,
-      images: [],
-      locale: I18N?.language || 'en',
-      type: 'website',
+      basic: {
+        title: SITE?.name || '',
+        type: 'website',
+        image: SITE?.image || '/default-og.png',
+      },
+      optional: {
+        description: SITE?.description,
+        siteName: SITE?.name,
+        locale: I18N?.language || 'en',
+      },
+      image: {
+        url: SITE?.image || '/default-og.png',
+        alt: SITE?.name || '',
+      },
     },
     twitter: {
       cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
@@ -65,4 +74,4 @@ const seoProps: AstroSeoProps = merge(
 );
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+<SEO {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />

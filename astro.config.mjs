@@ -37,6 +37,11 @@ export default defineConfig({
   security: {
     checkOrigin: true
   },
+  prefetch: true, // Using built-in prefetch in Astro 5
+  image: {
+    // Using the default Sharp image service in Astro 5
+    remotePatterns: [{ protocol: "https" }],
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -86,6 +91,7 @@ export default defineConfig({
 
   image: {
     // Using the default Sharp image service in Astro 5
+    remotePatterns: [{ protocol: "https" }],
   },
 
   markdown: {
