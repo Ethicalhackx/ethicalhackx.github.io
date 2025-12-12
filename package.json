@@ -17,12 +17,12 @@
 		"lint:eslint": "eslint ."
 	},
 	"dependencies": {
-		"@astrojs/markdown-remark": "^6.3.3",
-		"@astrojs/rss": "^4.0.12",
-		"@astrojs/sitemap": "^3.4.1",
+		"@astrojs/markdown-remark": "^6.3.10",
+		"@astrojs/rss": "^4.0.14",
+		"@astrojs/sitemap": "^3.6.0",
 		"@expressive-code/plugin-line-numbers": "^0.41.3",
 		"@fontsource-variable/inter": "^5.2.6",
-		"astro": "^5.12.1",
+		"astro": "^5.16.5",
 		"astro-embed": "^0.9.0",
 		"astro-icon": "^1.1.5",
 		"astro-seo": "^0.8.4",
@@ -34,7 +34,7 @@
 		"unpic": "^3.22.0"
 	},
 	"devDependencies": {
-		"@astrojs/mdx": "^4.3.1",
+		"@astrojs/mdx": "^4.3.13",
 		"@astrojs/partytown": "^2.1.4",
 		"@astrojs/prefetch": "^0.4.1",
 		"@astrojs/tailwind": "^6.0.2",
