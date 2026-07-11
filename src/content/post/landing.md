@@ -26,7 +26,7 @@ Imagine clicking on an ad for a limited-time discount on a popular shoe brand. T
 
 Unlike a homepage brimming with diverse content, a Landing Page is laser-focused. It eliminates potential distractions like excessive navigation, ensuring the visitor's attention remains undivided. The result? Higher conversion rates and a more streamlined user experience.
 
-![Target](https://images.unsplash.com/photo-1596008194705-2091cd6764d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1639&q=80)
+<img src="https://images.unsplash.com/photo-1596008194705-2091cd6764d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1639&q=80" alt="Target" />
 
 Think of a Landing Page as a digital salesperson. Just as a salesperson would pitch a product without distractions, a Landing Page promotes an offer without unnecessary links or information. It's like walking into a store with a single product on display, making your choice straightforward.
 

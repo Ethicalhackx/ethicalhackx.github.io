@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
@@ -14,7 +14,7 @@ import astrowind from './vendor/integration';
 
 import remarkToc from 'remark-toc';
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-import { rehypeHeadingIds } from '@astrojs/markdown-remark';
+import { rehypeHeadingIds, unified } from '@astrojs/markdown-remark';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 
@@ -37,15 +37,12 @@ export default defineConfig({
   security: {
     checkOrigin: true
   },
-  prefetch: true, // Using built-in prefetch in Astro 5
+  prefetch: true, // Using built-in prefetch
   image: {
-    // Using the default Sharp image service in Astro 5
-    remotePatterns: [{ protocol: "https" }],
+    // Using the default Sharp image service
+    remotePatterns: [{ protocol: 'https' }],
   },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     sitemap(),
     mdx(),
     icon({
@@ -89,20 +86,23 @@ export default defineConfig({
     }),
   ],
 
-  image: {
-    // Using the default Sharp image service in Astro 5
-    remotePatterns: [{ protocol: "https" }],
-  },
-
   markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: "Table of Contents"} ]],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin, rehypeHeadingIds, rehypeAccessibleEmojis,rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'append' }]],
     // Applied to .md and .mdx files
-    // remarkPlugins: [remarkToc],
-    // rehypePlugins: [rehypeAccessibleEmojis],
+    processor: unified({
+      remarkPlugins: [readingTimeRemarkPlugin, [remarkToc, { heading: 'Table of Contents' }]],
+      rehypePlugins: [
+        responsiveTablesRehypePlugin,
+        lazyImagesRehypePlugin,
+        rehypeHeadingIds,
+        rehypeAccessibleEmojis,
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behavior: 'append' }],
+      ],
+    }),
   },
 
   vite: {
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),

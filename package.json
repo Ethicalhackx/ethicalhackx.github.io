@@ -5,7 +5,7 @@
 	"type": "module",
 	"private": true,
 	"engines": {
-		"node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
+		"node": ">=22.12.0"
 	},
 	"scripts": {
 		"dev": "astro dev",
@@ -17,13 +17,13 @@
 		"lint:eslint": "eslint ."
 	},
 	"dependencies": {
-		"@astrojs/markdown-remark": "^6.3.10",
-		"@astrojs/rss": "^4.0.14",
-		"@astrojs/sitemap": "^3.6.0",
+		"@astrojs/markdown-remark": "^7.2.0",
+		"@astrojs/rss": "^4.0.19",
+		"@astrojs/sitemap": "^3.7.3",
 		"@expressive-code/plugin-line-numbers": "^0.41.3",
 		"@fontsource-variable/inter": "^5.2.6",
-		"astro": "^5.16.5",
-		"astro-embed": "^0.9.0",
+		"astro": "^6.4.8",
+		"astro-embed": "^0.13.1",
 		"astro-icon": "^1.1.5",
 		"astro-seo": "^0.8.4",
 		"limax": "4.1.0",
@@ -34,15 +34,14 @@
 		"unpic": "^3.22.0"
 	},
 	"devDependencies": {
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/partytown": "^2.1.4",
-		"@astrojs/prefetch": "^0.4.1",
-		"@astrojs/tailwind": "^6.0.2",
+		"@astrojs/mdx": "^6.0.3",
+		"@astrojs/partytown": "^2.1.7",
 		"@eslint/js": "^9.31.0",
 		"@iconify-json/flat-color-icons": "^1.2.1",
 		"@iconify-json/tabler": "^1.2.19",
 		"@playform/compress": "^0.2.0",
-		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/typography": "^0.5.20",
+		"@tailwindcss/vite": "^4.3.2",
 		"@types/eslint__js": "^8.42.3",
 		"@types/js-yaml": "^4.0.9",
 		"@types/lodash.merge": "^4.6.9",
@@ -61,9 +60,16 @@
 		"rehype-accessible-emojis": "^0.3.2",
 		"rehype-plugin-image-native-lazy-loading": "^1.2.0",
 		"sharp": "^0.34.3",
-		"tailwind-merge": "^2.6.0",
-		"tailwindcss": "^3.4.3",
+		"tailwind-merge": "^3.6.0",
+		"tailwindcss": "^4.3.2",
 		"typescript": "^5.8.3",
 		"typescript-eslint": "^7.8.0"
+	},
+	"overrides": {
+		"vite": "^7.3.2"
+	},
+	"allowScripts": {
+		"sharp@0.34.5": true,
+		"esbuild@0.27.7": true
 	}
 }
