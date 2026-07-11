@@ -1,5 +1,33 @@
 @import 'tailwindcss';
-@config '../../../tailwind.config.mjs';
+@plugin '@tailwindcss/typography';
+
+/* astro-icon lives in node_modules, which is excluded from automatic source detection */
+@source '../../../node_modules/astro-icon';
+
+/* Class-based dark mode: AstroWind toggles a `.dark` class on the <html> element */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  --color-primary: var(--aw-color-primary);
+  --color-secondary: var(--aw-color-secondary);
+  --color-accent: var(--aw-color-accent);
+  --color-default: var(--aw-color-text-default);
+  --color-muted: var(--aw-color-text-muted);
+
+  --font-sans:
+    var(--aw-font-sans, ui-sans-serif), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: var(--aw-font-serif, ui-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-heading:
+    var(--aw-font-heading, ui-sans-serif), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+}
 
 @utility bg-page {
   background-color: var(--aw-color-bg-page);
@@ -12,9 +40,6 @@
 }
 @utility text-page {
   color: var(--aw-color-text-page);
-}
-@utility text-muted {
-  color: var(--aw-color-text-muted);
 }
 
 @utility btn {

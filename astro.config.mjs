@@ -69,7 +69,10 @@ export default defineConfig({
     ),
 
     compress({
-      CSS: true,
+      // Vite already minifies CSS during the build. Leaving this enabled runs a second
+      // pass (@playform/compress) that strips Tailwind v4's modern range media queries
+      // (e.g. `@media (width>=48rem)`), which breaks all responsive breakpoints.
+      CSS: false,
       HTML: {
         'html-minifier-terser': {
           removeAttributeQuotes: false,
