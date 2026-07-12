@@ -1,0 +1,217 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Content from '~/components/widgets/Content.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/abhinavkakku/';
+const GITHUB_URL = 'https://github.com/ethicalhackx';
+
+const metadata = {
+  title: '$whoami — Abhinav Kakku',
+  description:
+    'Cybersecurity professional, researcher, and educator. Offensive security, application security, and blue-team operations.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    tagline="$ whoami"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Connect on LinkedIn',
+        href: LINKEDIN_URL,
+        target: '_blank',
+        icon: 'tabler:brand-linkedin',
+      },
+      { text: 'Read the Blog', href: '/' },
+    ]}
+  >
+    <Fragment slot="title">
+      Abhinav Kakku <br />
+      <span class="text-accent dark:text-white highlight">Cybersecurity Professional</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      I break things to help build them stronger. I work across <span class="font-semibold">offensive security</span>,
+      <span class="font-semibold">application security</span>, and <span class="font-semibold">blue-team operations</span>
+      — and I write about it here to help others break into and grow within the field.
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'Years in Security', amount: '10+' },
+      { title: 'Articles Published', amount: '100+' },
+      { title: 'Talks & Trainings', amount: '25+' },
+      { title: 'Labs & Writeups', amount: '50+' },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="What I do"
+    subtitle="A blend of defensive, offensive, and educational work across the security spectrum."
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Offensive Security',
+        description:
+          'Penetration testing, red teaming, and adversary simulation to uncover real-world attack paths before the attackers do.',
+        icon: 'tabler:crosshair',
+      },
+      {
+        title: 'Application Security',
+        description:
+          'Secure code review, threat modeling, and web/API security assessments across the modern application stack.',
+        icon: 'tabler:shield-lock',
+      },
+      {
+        title: 'SOC & Incident Response',
+        description:
+          'Detection engineering, threat hunting, and incident response to reduce dwell time and contain threats fast.',
+        icon: 'tabler:radar',
+      },
+    ]}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    columns={3}
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Cloud Security',
+        description:
+          'Hardening cloud workloads and identity, and finding misconfigurations across AWS, Azure, and GCP environments.',
+        icon: 'tabler:cloud-lock',
+      },
+      {
+        title: 'Security Research',
+        description: 'Digging into tools, techniques, and vulnerabilities — then sharing the findings with the community.',
+        icon: 'tabler:microscope',
+      },
+      {
+        title: 'Training & Mentorship',
+        description:
+          'Helping aspiring professionals break into cybersecurity through hands-on labs, guidance, and mock interviews.',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Security operations',
+    }}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: LINKEDIN_URL,
+        },
+      },
+      {
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'GitHub',
+          href: GITHUB_URL,
+        },
+      },
+      {
+        icon: 'tabler:rss',
+        callToAction: {
+          text: 'Blog',
+          href: '/',
+        },
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Working at a laptop',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+      <p>
+        I'm a cybersecurity practitioner who enjoys living on both sides of the fence — attacking systems to understand
+        how they fail, and defending them so they don't. Over the years I've worked across penetration testing,
+        application security, and security operations.
+      </p>
+      <br />
+      <p>
+        Beyond the day job, I'm passionate about giving back to the community: writing tutorials, building hands-on labs,
+        and mentoring people who are starting or growing their careers in security.
+      </p>
+      <br />
+      <p>Let's connect — you can find me here:</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    title="Experience"
+    items={[
+      {
+        title:
+          'Senior Security Engineer <br /> <span class="font-normal">Placeholder Organization</span> <br /> <span class="text-sm font-normal">20XX - Present</span>',
+        description: `Leading offensive and application security initiatives, building detection capabilities, and mentoring the team. (Details to be added.)`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Security Consultant <br /> <span class="font-normal">Placeholder Organization</span> <br /> <span class="text-sm font-normal">20XX - 20XX</span>',
+        description: `Delivered penetration tests, security assessments, and advisory across a range of clients and industries. (Details to be added.)`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: 'Ongoing <br /> <span class="font-normal">Writing, research & community</span>',
+        description: 'Publishing articles, building labs, and sharing knowledge to help others grow in the field.',
+        icon: 'tabler:pencil',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Let's connect"
+    subtitle="Have a question, an opportunity, or just want to talk security? Reach out — I'm always happy to chat."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Connect on LinkedIn',
+        href: LINKEDIN_URL,
+        target: '_blank',
+        icon: 'tabler:brand-linkedin',
+      },
+    ]}
+  />
+</Layout>

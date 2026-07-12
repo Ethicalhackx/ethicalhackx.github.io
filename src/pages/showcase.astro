@@ -1,0 +1,873 @@
+---
+// Fully self-contained, independent scroll-cinematic page (tech + security themed).
+// Apple-product-launch style scroll-driven storytelling. Imports nothing from the site.
+
+const product = 'SENTINEL';
+
+const statement =
+  'Every packet. Every process. Every identity. Watched, verified, and protected — before a threat becomes a breach.';
+
+const panels = [
+  {
+    no: '01',
+    title: 'Threat Intelligence',
+    body: 'Billions of signals correlated in real time to surface the attacks that matter — and silence the noise.',
+    icon: 'radar',
+  },
+  {
+    no: '02',
+    title: 'Zero-Trust Access',
+    body: 'Every request verified, every identity challenged. Trust is earned per-session, never assumed.',
+    icon: 'key',
+  },
+  {
+    no: '03',
+    title: 'Runtime Defense',
+    body: 'Workloads watch themselves. Malicious behavior is contained the moment it appears.',
+    icon: 'shield',
+  },
+  {
+    no: '04',
+    title: 'Autonomous Response',
+    body: 'Playbooks execute in milliseconds — isolating, rotating, and remediating without waiting on a human.',
+    icon: 'bolt',
+  },
+  {
+    no: '05',
+    title: 'Cloud Posture',
+    body: 'Continuous hardening across AWS, Azure, and GCP. Misconfigurations closed before they are found.',
+    icon: 'cloud',
+  },
+];
+
+const stats = [
+  { value: 2.4, suffix: 'B', label: 'events analyzed / day', decimals: 1 },
+  { value: 99.99, suffix: '%', label: 'platform uptime', decimals: 2 },
+  { value: 47, suffix: 'ms', label: 'median detection', decimals: 0 },
+  { value: 0, suffix: '', label: 'trust assumed', decimals: 0 },
+];
+
+const words = statement.split(' ');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{product} — security, in motion</title>
+    <meta name="description" content="A cinematic look at a next-generation security platform. Tech meets defense." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+    <nav class="nav">
+      <span class="brand">◈ {product}</span>
+      <span class="brand-tag">security platform</span>
+    </nav>
+
+    <!-- SCENE 1 — HERO -->
+    <section class="scene scene-hero" data-scene="hero">
+      <div class="sticky">
+        <p class="eyebrow" data-hero="eyebrow">Introducing</p>
+        <h1 class="title" data-hero="title">{product}</h1>
+        <p class="subtitle" data-hero="subtitle">Security, in motion.</p>
+        <div class="scroll-hint" data-hero="hint">
+          <span>scroll</span>
+          <span class="mouse"><span class="wheel"></span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 2 — SECURITY CORE -->
+    <section class="scene scene-core" data-scene="core">
+      <div class="sticky">
+        <div class="core" data-core="stage">
+          <svg class="rings" viewBox="0 0 400 400" data-core="rings">
+            <circle cx="200" cy="200" r="70" />
+            <circle cx="200" cy="200" r="110" />
+            <circle cx="200" cy="200" r="155" />
+            <circle cx="200" cy="200" r="195" />
+          </svg>
+          <svg class="hex" viewBox="0 0 120 120" data-core="hex">
+            <polygon points="60,6 110,33 110,87 60,114 10,87 10,33" />
+            <path class="lock-body" d="M44 56 h32 v26 h-32 z" />
+            <path class="lock-shackle" d="M50 56 v-8 a10 10 0 0 1 20 0 v8" />
+          </svg>
+          <div class="node n1" data-node></div>
+          <div class="node n2" data-node></div>
+          <div class="node n3" data-node></div>
+          <div class="node n4" data-node></div>
+          <div class="node n5" data-node></div>
+          <div class="node n6" data-node></div>
+        </div>
+        <div class="core-labels">
+          <span class="core-label" data-phase="0">Encrypted end&#8209;to&#8209;end.</span>
+          <span class="core-label" data-phase="1">Monitored in real time.</span>
+          <span class="core-label" data-phase="2">Defended autonomously.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3 — STATEMENT -->
+    <section class="scene scene-statement" data-scene="statement">
+      <div class="sticky">
+        <p class="statement" data-statement>
+          {words.map((w, i) => <span class="word" data-i={i}>{w}&nbsp;</span>)}
+        </p>
+      </div>
+    </section>
+
+    <!-- SCENE 4 — HORIZONTAL GALLERY -->
+    <section class="scene scene-gallery" data-scene="gallery" id="gallery">
+      <div class="sticky">
+        <div class="gallery-head">
+          <span class="section-kicker">// capabilities</span>
+        </div>
+        <div class="track" data-track>
+          {
+            panels.map((p) => (
+              <article class="panel">
+                <div class="panel-icon" data-icon={p.icon}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    {p.icon === 'radar' && (
+                      <>
+                        <circle cx="12" cy="12" r="9" />
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 12 L20 6" />
+                      </>
+                    )}
+                    {p.icon === 'key' && (
+                      <>
+                        <circle cx="8" cy="8" r="4" />
+                        <path d="M11 11 L21 21 M18 18 l2 -2 M15 15 l2 -2" />
+                      </>
+                    )}
+                    {p.icon === 'shield' && <path d="M12 3 l7 3 v6 c0 4 -3 7 -7 9 c-4 -2 -7 -5 -7 -9 V6 z" />}
+                    {p.icon === 'bolt' && <path d="M13 2 L4 14 h7 l-1 8 l9 -12 h-7 z" />}
+                    {p.icon === 'cloud' && (
+                      <>
+                        <path d="M7 18 a4 4 0 0 1 0 -8 a5 5 0 0 1 9.5 -1 A4 4 0 0 1 17 18 z" />
+                        <path d="M12 13 v4 M10 15 h4" />
+                      </>
+                    )}
+                  </svg>
+                </div>
+                <span class="panel-no">{p.no}</span>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 5 — STATS -->
+    <section class="scene-block stats-block">
+      <div class="stats reveal">
+        {
+          stats.map((s) => (
+            <div class="stat">
+              <div
+                class="stat-value"
+                data-target={s.value}
+                data-suffix={s.suffix}
+                data-decimals={s.decimals}
+              >
+                0
+              </div>
+              <div class="stat-label">{s.label}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- OUTRO -->
+    <section class="scene-block outro">
+      <h2 class="reveal">Deploy in minutes.<br /><span class="grad">Defend for years.</span></h2>
+      <p class="reveal">Security that moves at the speed of your infrastructure.</p>
+      <div class="cta reveal">
+        <a class="btn btn-primary" href="#top">Request a demo</a>
+        <a class="btn btn-ghost" href="#top">Read the docs</a>
+      </div>
+      <footer class="foot">◈ {product} — a concept showcase.</footer>
+    </section>
+
+    <style is:global>
+      :root {
+        --bg: #04060b;
+        --text: #eef2ff;
+        --muted: #8a93b2;
+        --c1: #5b7cff;
+        --c2: #16e0c4;
+        --c3: #b06bff;
+        --border: rgba(255, 255, 255, 0.1);
+        --panel: rgba(255, 255, 255, 0.04);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Progress bar */
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        z-index: 50;
+        background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+        box-shadow: 0 0 14px rgba(91, 124, 255, 0.7);
+      }
+
+      /* Ambient background */
+      .aurora {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        overflow: hidden;
+        filter: blur(70px);
+      }
+      .aurora span {
+        position: absolute;
+        display: block;
+        width: 55vw;
+        height: 55vw;
+        border-radius: 50%;
+        opacity: 0.4;
+        mix-blend-mode: screen;
+      }
+      .aurora span:nth-child(1) {
+        background: var(--c1);
+        top: -10%;
+        left: -10%;
+        animation: drift1 22s ease-in-out infinite;
+      }
+      .aurora span:nth-child(2) {
+        background: var(--c2);
+        bottom: -15%;
+        right: -10%;
+        animation: drift2 26s ease-in-out infinite;
+      }
+      .aurora span:nth-child(3) {
+        background: var(--c3);
+        top: 30%;
+        left: 40%;
+        animation: drift3 30s ease-in-out infinite;
+      }
+      @keyframes drift1 {
+        50% {
+          transform: translate(20vw, 15vh) scale(1.2);
+        }
+      }
+      @keyframes drift2 {
+        50% {
+          transform: translate(-18vw, -12vh) scale(1.1);
+        }
+      }
+      @keyframes drift3 {
+        50% {
+          transform: translate(-15vw, 18vh) scale(1.25);
+        }
+      }
+      .noise {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 40;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.1rem clamp(1.25rem, 5vw, 2.5rem);
+        font-size: 0.85rem;
+      }
+      .brand {
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+      .brand-tag {
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: 0.1em;
+      }
+
+      /* Scenes (scroll-driven) */
+      .scene {
+        position: relative;
+      }
+      .scene .sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        padding: 0 1.25rem;
+      }
+      .scene-hero {
+        height: 220vh;
+      }
+      .scene-core {
+        height: 360vh;
+      }
+      .scene-statement {
+        height: 260vh;
+      }
+      .scene-gallery {
+        height: 420vh;
+      }
+
+      /* Hero */
+      .eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--c2);
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+      }
+      .title {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(3.5rem, 16vw, 11rem);
+        letter-spacing: 0.02em;
+        line-height: 0.95;
+        background: linear-gradient(180deg, #fff, #9fb0ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .subtitle {
+        margin-top: 1.2rem;
+        font-size: clamp(1.1rem, 3vw, 1.7rem);
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .scroll-hint {
+        position: absolute;
+        bottom: 8vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .mouse {
+        width: 22px;
+        height: 34px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        padding-top: 6px;
+      }
+      .wheel {
+        width: 3px;
+        height: 7px;
+        border-radius: 2px;
+        background: var(--c2);
+        animation: wheel 1.6s ease-in-out infinite;
+      }
+      @keyframes wheel {
+        50% {
+          transform: translateY(9px);
+          opacity: 0.3;
+        }
+      }
+
+      /* Security core */
+      .core {
+        position: relative;
+        width: min(70vh, 90vw);
+        height: min(70vh, 90vw);
+        display: grid;
+        place-items: center;
+      }
+      .core .rings,
+      .core .hex {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+      }
+      .rings {
+        width: 100%;
+        height: 100%;
+      }
+      .rings circle {
+        fill: none;
+        stroke: rgba(120, 150, 255, 0.35);
+        stroke-width: 1;
+        stroke-dasharray: 4 8;
+      }
+      .hex {
+        width: 34%;
+        height: 34%;
+        filter: drop-shadow(0 0 22px rgba(91, 124, 255, 0.7));
+      }
+      .hex polygon {
+        fill: rgba(91, 124, 255, 0.08);
+        stroke: url(#g);
+        stroke: var(--c1);
+        stroke-width: 2;
+      }
+      .hex .lock-body {
+        fill: none;
+        stroke: var(--c2);
+        stroke-width: 3;
+      }
+      .hex .lock-shackle {
+        fill: none;
+        stroke: var(--c2);
+        stroke-width: 3;
+      }
+      .node {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--c2);
+        box-shadow: 0 0 14px var(--c2);
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+      }
+
+      .core-labels {
+        position: absolute;
+        bottom: 12vh;
+        height: 2rem;
+      }
+      .core-label {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.4rem, 4vw, 2.4rem);
+        opacity: 0;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+
+      /* Statement */
+      .statement {
+        max-width: 20ch;
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.8rem, 6vw, 4rem);
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+      }
+      .statement .word {
+        color: rgba(255, 255, 255, 0.14);
+        transition: color 0.25s ease, text-shadow 0.25s ease;
+      }
+      .statement .word.lit {
+        color: #fff;
+      }
+      .statement .word.accent {
+        background: linear-gradient(120deg, var(--c2), var(--c1));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Gallery (horizontal) */
+      .scene-gallery .sticky {
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 18vh;
+      }
+      .gallery-head {
+        padding: 0 clamp(1.25rem, 6vw, 5rem);
+      }
+      .section-kicker {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--c2);
+        letter-spacing: 0.2em;
+        font-size: 0.9rem;
+      }
+      .track {
+        display: flex;
+        gap: 1.5rem;
+        padding: 2.5rem clamp(1.25rem, 6vw, 5rem);
+        width: max-content;
+        will-change: transform;
+      }
+      .panel {
+        width: min(78vw, 380px);
+        height: 52vh;
+        flex: 0 0 auto;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+        backdrop-filter: blur(8px);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        overflow: hidden;
+      }
+      .panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 80% 0%, rgba(22, 224, 196, 0.16), transparent 55%);
+      }
+      .panel-icon {
+        position: absolute;
+        top: 1.8rem;
+        left: 2rem;
+        width: 46px;
+        height: 46px;
+        color: var(--c2);
+      }
+      .panel-icon svg {
+        width: 100%;
+        height: 100%;
+      }
+      .panel-no {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .panel h3 {
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin: 0.4rem 0 0.7rem;
+      }
+      .panel p {
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      /* Static blocks */
+      .scene-block {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(4rem, 12vh, 9rem) clamp(1.25rem, 5vw, 2rem);
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+      @media (max-width: 720px) {
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .stat {
+        text-align: center;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2rem 1rem;
+        background: var(--panel);
+      }
+      .stat-value {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2rem, 5vw, 3rem);
+        background: linear-gradient(135deg, var(--c2), var(--c1));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .stat-label {
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-top: 0.4rem;
+      }
+
+      .outro {
+        text-align: center;
+      }
+      .outro h2 {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 7vw, 4.5rem);
+        line-height: 1.05;
+      }
+      .grad {
+        background: linear-gradient(120deg, var(--c1), var(--c2), var(--c3));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .outro p {
+        color: var(--muted);
+        margin: 1.2rem 0 2rem;
+        font-size: 1.1rem;
+      }
+      .cta {
+        display: flex;
+        gap: 0.9rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn {
+        padding: 0.85rem 1.7rem;
+        border-radius: 999px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      }
+      .btn-primary {
+        color: #04060b;
+        background: linear-gradient(135deg, var(--c2), var(--c1));
+        box-shadow: 0 0 28px rgba(22, 224, 196, 0.4);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 40px rgba(22, 224, 196, 0.6);
+      }
+      .btn-ghost {
+        color: var(--text);
+        border-color: var(--border);
+      }
+      .btn-ghost:hover {
+        transform: translateY(-2px);
+        border-color: var(--c2);
+        color: var(--c2);
+      }
+      .foot {
+        margin-top: 4rem;
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+      }
+
+      /* Reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .outro .reveal:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .outro .reveal:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .aurora span,
+        .wheel {
+          animation: none !important;
+        }
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const progressBar = document.getElementById('progress');
+        const docEl = document.documentElement;
+
+        // Scene refs
+        const heroScene = document.querySelector('[data-scene="hero"]');
+        const coreScene = document.querySelector('[data-scene="core"]');
+        const stmtScene = document.querySelector('[data-scene="statement"]');
+        const galScene = document.querySelector('[data-scene="gallery"]');
+
+        const heroEls = {
+          eyebrow: document.querySelector('[data-hero="eyebrow"]'),
+          title: document.querySelector('[data-hero="title"]'),
+          subtitle: document.querySelector('[data-hero="subtitle"]'),
+          hint: document.querySelector('[data-hero="hint"]'),
+        };
+        const rings = document.querySelector('[data-core="rings"]');
+        const hex = document.querySelector('[data-core="hex"]');
+        const nodes = Array.from(document.querySelectorAll('[data-node]'));
+        const labels = Array.from(document.querySelectorAll('.core-label'));
+        const words = Array.from(document.querySelectorAll('.statement .word'));
+        const track = document.querySelector('[data-track]');
+
+        // Position orbit nodes once
+        nodes.forEach((n, i) => {
+          n._angle = (i / nodes.length) * Math.PI * 2;
+        });
+
+        function sceneProgress(el) {
+          if (!el) return 0;
+          const rect = el.getBoundingClientRect();
+          const total = el.offsetHeight - window.innerHeight;
+          return clamp(-rect.top / total, 0, 1);
+        }
+
+        function update() {
+          // Global progress bar
+          const scrollable = docEl.scrollHeight - window.innerHeight;
+          progressBar.style.width = clamp(window.scrollY / scrollable, 0, 1) * 100 + '%';
+
+          // HERO: title scales up + fades, subtitle rises, hint fades early
+          const hp = sceneProgress(heroScene);
+          if (heroEls.title) {
+            const scale = lerp(1, 1.6, hp);
+            const ty = lerp(0, -12, hp);
+            heroEls.title.style.transform = `translateY(${ty}vh) scale(${scale})`;
+            heroEls.title.style.opacity = clamp(1 - hp * 1.15, 0, 1);
+            heroEls.eyebrow.style.opacity = clamp(1 - hp * 2, 0, 1);
+            heroEls.subtitle.style.opacity = clamp(1 - hp * 1.4, 0, 1);
+            heroEls.subtitle.style.transform = `translateY(${lerp(0, -4, hp)}vh)`;
+            heroEls.hint.style.opacity = clamp(1 - hp * 4, 0, 1);
+          }
+
+          // CORE: rings rotate/scale, hex scales & spins slightly, nodes orbit outward, phase labels
+          const cp = sceneProgress(coreScene);
+          if (rings) {
+            rings.style.transform = `rotate(${cp * 180}deg) scale(${lerp(0.7, 1.05, cp)})`;
+            rings.style.opacity = clamp(cp * 2.5, 0, 1);
+            hex.style.transform = `rotate(${lerp(-20, 0, clamp(cp * 1.5, 0, 1))}deg) scale(${lerp(0.4, 1, clamp(cp * 1.5, 0, 1))})`;
+            hex.style.opacity = clamp(cp * 3, 0, 1);
+
+            const radius = lerp(0, Math.min(window.innerHeight, window.innerWidth) * 0.28, clamp(cp * 1.4, 0, 1));
+            nodes.forEach((n) => {
+              const a = n._angle + cp * Math.PI * 1.2;
+              const x = Math.cos(a) * radius;
+              const y = Math.sin(a) * radius;
+              n.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+              n.style.opacity = clamp(cp * 2 - 0.2, 0, 1);
+            });
+
+            const phase = cp < 0.36 ? 0 : cp < 0.7 ? 1 : 2;
+            labels.forEach((l) => {
+              const active = +l.dataset.phase === phase;
+              l.style.opacity = active ? 1 : 0;
+              l.style.transform = `translateX(-50%) translateY(${active ? 0 : 14}px)`;
+            });
+          }
+
+          // STATEMENT: light words up sequentially
+          const sp = sceneProgress(stmtScene);
+          const litCount = Math.floor(sp * (words.length + 2));
+          words.forEach((w, i) => {
+            w.classList.toggle('lit', i < litCount);
+          });
+
+          // GALLERY: translate track horizontally with scroll
+          const gp = sceneProgress(galScene);
+          if (track) {
+            const dist = track.scrollWidth - window.innerWidth + 40;
+            track.style.transform = `translateX(${-gp * Math.max(dist, 0)}px)`;
+          }
+        }
+
+        let ticking = false;
+        function onScroll() {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              update();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+
+        // Highlight the final phrase of the statement
+        (function () {
+          const total = words.length;
+          words.slice(total - 4).forEach((w) => w.classList.add('accent'));
+        })();
+
+        // Reveal + counters
+        const reveals = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        reveals.forEach((r) => io.observe(r));
+
+        const counters = document.querySelectorAll('.stat-value');
+        const cio = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (!e.isIntersecting) return;
+              const el = e.target;
+              const target = parseFloat(el.dataset.target);
+              const decimals = parseInt(el.dataset.decimals || '0', 10);
+              const suffix = el.dataset.suffix || '';
+              const dur = 1600;
+              const start = performance.now();
+              function tick(now) {
+                const p = Math.min((now - start) / dur, 1);
+                const eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = (target * eased).toFixed(decimals) + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+              }
+              requestAnimationFrame(tick);
+              cio.unobserve(el);
+            });
+          },
+          { threshold: 0.5 }
+        );
+        counters.forEach((c) => cio.observe(c));
+      })();
+    </script>
+  </body>
+</html>

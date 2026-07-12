@@ -1,0 +1,621 @@
+---
+// Fully self-contained, independent scroll-driven "career map" page.
+// Scroll grows a tree: root -> main cybersecurity branches -> sub-roles.
+// Imports nothing from the rest of the site.
+
+const mains = [
+  {
+    name: 'Offensive Security',
+    color: '#ff5d73',
+    subs: ['Penetration Tester', 'Red Team Operator', 'Exploit Developer', 'Bug Bounty Hunter'],
+  },
+  {
+    name: 'Defensive Security',
+    color: '#22d3ee',
+    subs: ['SOC Analyst', 'Threat Hunter', 'Incident Responder', 'Detection Engineer'],
+  },
+  {
+    name: 'Application Security',
+    color: '#a855f7',
+    subs: ['AppSec Engineer', 'DevSecOps Engineer', 'Product Security', 'Secure Code Reviewer'],
+  },
+  {
+    name: 'Security Engineering',
+    color: '#5b7cff',
+    subs: ['Security Engineer', 'Security Architect', 'Cloud Security Engineer', 'IAM Engineer'],
+  },
+  {
+    name: 'GRC & Risk',
+    color: '#f5b83d',
+    subs: ['Security Auditor', 'Compliance Analyst', 'Risk Analyst', 'vCISO'],
+  },
+  {
+    name: 'DFIR & Threat Intel',
+    color: '#16e0c4',
+    subs: ['Forensic Analyst', 'Malware Analyst', 'Threat Intel Analyst', 'IR Consultant'],
+  },
+];
+
+// Greedy word-wrap into up to 2 lines (~14 chars/line) for SVG labels.
+const wrap = (str: string, max = 14): string[] => {
+  const words = str.split(' ');
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const next = line ? line + ' ' + w : w;
+    if (next.length > max && line) {
+      lines.push(line);
+      line = w;
+    } else {
+      line = next;
+    }
+  }
+  if (line) lines.push(line);
+  return lines.slice(0, 2);
+};
+
+const W = 1440;
+const marginX = 160;
+const step = (W - 2 * marginX) / 5;
+const rootX = 720;
+const rootY = 86;
+const mainY = 330;
+const subStartY = 474;
+const subGap = 84;
+
+const layout = mains.map((m, i) => {
+  const x = marginX + i * step;
+  const connStart = +(0.05 + i * 0.012).toFixed(3);
+  const connEnd = +(connStart + 0.13).toFixed(3);
+  const stemStart = +(0.34 + i * 0.015).toFixed(3);
+  const stemEnd = 0.9;
+  const lastSubY = subStartY + (m.subs.length - 1) * subGap;
+  const subs = m.subs.map((s, j) => ({
+    name: s,
+    x,
+    y: subStartY + j * subGap,
+    lines: wrap(s),
+    appear: +(stemStart + ((j + 1) / m.subs.length) * (stemEnd - stemStart) * 0.92).toFixed(3),
+  }));
+  return {
+    ...m,
+    x,
+    lines: wrap(m.name),
+    connStart,
+    connEnd,
+    mainAppear: +(connEnd - 0.02).toFixed(3),
+    stemStart,
+    stemEnd,
+    lastSubY,
+    subs,
+    rootPath: `M ${rootX} ${rootY + 30} C ${rootX} 210, ${x} 210, ${x} ${mainY - 28}`,
+    stemPath: `M ${x} ${mainY + 28} L ${x} ${lastSubY}`,
+  };
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cybersecurity Career Map — scroll to branch out</title>
+    <meta name="description" content="An animated, scroll-driven map of cybersecurity career paths and roles." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="glow g1" aria-hidden="true"></div>
+    <div class="glow g2" aria-hidden="true"></div>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <p class="kicker">// cybersecurity career map</p>
+      <h1>One field.<br /><span class="grad">Many paths.</span></h1>
+      <p class="lead">Scroll to grow the tree — watch the domains branch out, then keep going as each one sprouts its roles.</p>
+      <div class="hint"><span>scroll</span><span class="mouse"><span class="wheel"></span></span></div>
+    </section>
+
+    <!-- TREE SCENE (pinned) -->
+    <section class="scene" data-scene="tree">
+      <div class="sticky">
+        <p class="stage-kicker">root@career:~$ <span class="type">map --grow</span></p>
+        <svg class="tree" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cybersecurity career tree">
+          <!-- connectors: root -> mains -->
+          {
+            layout.map((m) => (
+              <path
+                class="branch"
+                d={m.rootPath}
+                pathLength="1"
+                stroke={m.color}
+                data-start={m.connStart}
+                data-end={m.connEnd}
+              />
+            ))
+          }
+          <!-- connectors: main stems -->
+          {
+            layout.map((m) => (
+              <path
+                class="branch stem"
+                d={m.stemPath}
+                pathLength="1"
+                stroke={m.color}
+                data-start={m.stemStart}
+                data-end={m.stemEnd}
+              />
+            ))
+          }
+
+          <!-- ROOT node -->
+          <g class="node root in" data-appear="0">
+            <rect x={rootX - 122} y={rootY - 32} width="244" height="64" rx="16" />
+            <text x={rootX} y={rootY + 6} class="root-text">Cyber Security Jobs</text>
+          </g>
+
+          <!-- MAIN nodes -->
+          {
+            layout.map((m) => (
+              <g class="node main" data-appear={m.mainAppear} style={`--accent:${m.color}`}>
+                <rect x={m.x - 100} y={mainY - 27} width="200" height="54" rx="12" />
+                {m.lines.length === 1 ? (
+                  <text x={m.x} y={mainY + 6} class="main-text">
+                    {m.lines[0]}
+                  </text>
+                ) : (
+                  <text x={m.x} y={mainY - 3} class="main-text">
+                    <tspan x={m.x}>{m.lines[0]}</tspan>
+                    <tspan x={m.x} dy="18">
+                      {m.lines[1]}
+                    </tspan>
+                  </text>
+                )}
+              </g>
+            ))
+          }
+
+          <!-- SUB nodes -->
+          {
+            layout.map((m) =>
+              m.subs.map((s) => (
+                <g class="node sub" data-appear={s.appear} style={`--accent:${m.color}`}>
+                  <circle class="knob" cx={s.x} cy={s.y - 34} r="3.5" />
+                  <rect x={s.x - 90} y={s.y - 24} width="180" height="48" rx="10" />
+                  {s.lines.length === 1 ? (
+                    <text x={s.x} y={s.y + 5} class="sub-text">
+                      {s.lines[0]}
+                    </text>
+                  ) : (
+                    <text x={s.x} y={s.y - 4} class="sub-text">
+                      <tspan x={s.x}>{s.lines[0]}</tspan>
+                      <tspan x={s.x} dy="16">
+                        {s.lines[1]}
+                      </tspan>
+                    </text>
+                  )}
+                </g>
+              ))
+            )
+          }
+        </svg>
+      </div>
+    </section>
+
+    <!-- OUTRO -->
+    <section class="outro">
+      <h2 class="reveal">Pick a branch.<br /><span class="grad">Start climbing.</span></h2>
+      <p class="reveal">Every role connects — skills in one branch open doors in the next.</p>
+      <div class="legend reveal">
+        {layout.map((m) => <span class="chip" style={`--accent:${m.color}`}>{m.name}</span>)}
+      </div>
+      <footer class="foot">A concept showcase · scroll-driven SVG</footer>
+    </section>
+
+    <style is:global>
+      :root {
+        --bg: #05070d;
+        --text: #eef2ff;
+        --muted: #8790ac;
+        --border: rgba(255, 255, 255, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        z-index: 50;
+        background: linear-gradient(90deg, #ff5d73, #a855f7, #22d3ee);
+        box-shadow: 0 0 14px rgba(168, 85, 247, 0.7);
+      }
+
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(ellipse at 50% 40%, black, transparent 78%);
+      }
+      .glow {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.4;
+        z-index: -2;
+      }
+      .g1 {
+        width: 40vw;
+        height: 40vw;
+        background: #5b7cff;
+        top: -8%;
+        left: -6%;
+        animation: float 24s ease-in-out infinite;
+      }
+      .g2 {
+        width: 42vw;
+        height: 42vw;
+        background: #16e0c4;
+        bottom: -12%;
+        right: -8%;
+        animation: float 28s ease-in-out infinite reverse;
+      }
+      @keyframes float {
+        50% {
+          transform: translate(10vw, 8vh) scale(1.15);
+        }
+      }
+
+      /* Intro */
+      .intro {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1.25rem;
+      }
+      .kicker {
+        font-family: 'JetBrains Mono', monospace;
+        color: #22d3ee;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        margin-bottom: 1.3rem;
+      }
+      .intro h1 {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.8rem, 10vw, 6.5rem);
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+      }
+      .grad {
+        background: linear-gradient(120deg, #ff5d73, #a855f7, #22d3ee);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .lead {
+        color: var(--muted);
+        font-size: 1.1rem;
+        max-width: 46ch;
+        margin: 1.6rem auto 0;
+      }
+      .hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 3rem;
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+      .mouse {
+        width: 22px;
+        height: 34px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        padding-top: 6px;
+      }
+      .wheel {
+        width: 3px;
+        height: 7px;
+        border-radius: 2px;
+        background: #22d3ee;
+        animation: wheel 1.6s ease-in-out infinite;
+      }
+      @keyframes wheel {
+        50% {
+          transform: translateY(9px);
+          opacity: 0.3;
+        }
+      }
+
+      /* Scene */
+      .scene {
+        position: relative;
+        height: 520vh;
+      }
+      .sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 4vh 1rem 2vh;
+      }
+      .stage-kicker {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--muted);
+        font-size: 0.85rem;
+        margin-bottom: 1vh;
+      }
+      .stage-kicker .type {
+        color: #22d3ee;
+        border-right: 2px solid #22d3ee;
+        animation: caret 1s steps(1) infinite;
+        padding-right: 2px;
+      }
+      @keyframes caret {
+        50% {
+          border-color: transparent;
+        }
+      }
+      .tree {
+        width: min(1180px, 96vw);
+        height: auto;
+        max-height: 84vh;
+        overflow: visible;
+      }
+
+      /* Connectors */
+      .branch {
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 4px currentColor);
+      }
+      .stem {
+        stroke-width: 2;
+        stroke-dasharray: 1;
+        opacity: 0.7;
+      }
+
+      /* Nodes */
+      .node {
+        transform-box: fill-box;
+        transform-origin: center;
+        opacity: 0;
+        transform: scale(0.5);
+        transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .node.in {
+        opacity: 1;
+        transform: scale(1);
+      }
+      .node rect,
+      .node circle {
+        transition: filter 0.3s ease;
+      }
+      .node text {
+        font-family: 'Sora', sans-serif;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        fill: var(--text);
+      }
+
+      .root rect {
+        fill: rgba(255, 255, 255, 0.06);
+        stroke: #fff;
+        stroke-width: 1.5;
+        filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+      }
+      .root-text {
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      .main rect {
+        fill: color-mix(in srgb, var(--accent) 16%, transparent);
+        stroke: var(--accent);
+        stroke-width: 1.8;
+        filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent) 55%, transparent));
+      }
+      .main-text {
+        font-size: 16px;
+        font-weight: 700;
+        fill: #fff;
+      }
+
+      .sub rect {
+        fill: rgba(255, 255, 255, 0.04);
+        stroke: color-mix(in srgb, var(--accent) 60%, transparent);
+        stroke-width: 1.2;
+      }
+      .sub .knob {
+        fill: var(--accent);
+        filter: drop-shadow(0 0 6px var(--accent));
+      }
+      .sub-text {
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        fill: #d8def5;
+      }
+
+      /* Outro */
+      .outro {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1.25rem;
+      }
+      .outro h2 {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.2rem, 7vw, 4.5rem);
+        line-height: 1.04;
+      }
+      .outro p {
+        color: var(--muted);
+        margin: 1.2rem 0 2rem;
+        font-size: 1.1rem;
+        max-width: 48ch;
+      }
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        justify-content: center;
+        max-width: 760px;
+      }
+      .chip {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        color: var(--accent);
+        border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+        background: color-mix(in srgb, var(--accent) 10%, transparent);
+      }
+      .foot {
+        margin-top: 3rem;
+        color: var(--muted);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      .reveal:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .reveal:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .glow,
+        .wheel,
+        .stage-kicker .type {
+          animation: none !important;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const scene = document.querySelector('[data-scene="tree"]');
+        const progressBar = document.getElementById('progress');
+        const docEl = document.documentElement;
+        const paths = Array.from(document.querySelectorAll('path[data-start]'));
+        const nodes = Array.from(document.querySelectorAll('.node[data-appear]'));
+
+        function sceneProgress() {
+          const rect = scene.getBoundingClientRect();
+          const total = scene.offsetHeight - window.innerHeight;
+          return clamp(-rect.top / total, 0, 1);
+        }
+
+        function update() {
+          const scrollable = docEl.scrollHeight - window.innerHeight;
+          progressBar.style.width = clamp(window.scrollY / scrollable, 0, 1) * 100 + '%';
+
+          const p = sceneProgress();
+          for (const path of paths) {
+            const s = +path.dataset.start;
+            const e = +path.dataset.end;
+            const local = clamp((p - s) / (e - s), 0, 1);
+            path.style.strokeDashoffset = (1 - local).toFixed(4);
+          }
+          for (const node of nodes) {
+            const appear = +node.dataset.appear;
+            node.classList.toggle('in', p >= appear);
+          }
+        }
+
+        if (reduce) {
+          paths.forEach((p) => (p.style.strokeDashoffset = '0'));
+          nodes.forEach((n) => n.classList.add('in'));
+        } else {
+          let ticking = false;
+          const onScroll = () => {
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                update();
+                ticking = false;
+              });
+              ticking = true;
+            }
+          };
+          window.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('resize', update);
+          update();
+        }
+
+        // Outro reveal
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        document.querySelectorAll('.reveal').forEach((r) => io.observe(r));
+      })();
+    </script>
+  </body>
+</html>
