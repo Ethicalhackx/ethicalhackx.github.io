@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+    image: ethicalhackx-site:local
+    container_name: ethicalhackx-site
+    ports:
+      # host:container -> open http://localhost:8080
+      - "8080:80"
+    restart: unless-stopped

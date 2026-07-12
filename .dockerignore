@@ -1,0 +1,28 @@
+# Dependencies & build output (rebuilt inside the image)
+node_modules
+dist
+.astro
+.output
+.vercel
+.netlify
+
+# VCS & CI
+.git
+.gitignore
+.github
+
+# Local tooling / editor
+.vscode
+.idea
+.DS_Store
+*.log
+npm-debug.log*
+
+# Docker meta (not needed in the build context)
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Env files — never bake secrets into the image
+.env
+.env.*
